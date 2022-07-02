@@ -3,7 +3,7 @@
 extern int s;
 int main()
 {
-	printf("%d", s);
+	//printf("%d", s);
 	printf("Hello World!");
 	printf("Hello World!");
 	printf("Hello World!");
@@ -17,11 +17,13 @@ int main()
 	printf("%d\n", sizeof(long));
 	printf("%d\n", sizeof(float));
 	printf("%d\n", sizeof(double));
-	char a[5]="abcdr";
+	char a[]="abcdr";
+	char b[]={'a','b','c'};//只是放了字符，没有放\0
 	//scanf("%s",a);
 	//for (int i=0;i<5;i++)
-	printf("%s",a);
-	
+	printf("%s\n",a);
+	printf("%s",b);
+
 }
 //bit 比特
 //Byte 字节  1byte=8bit
