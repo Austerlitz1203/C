@@ -66,17 +66,47 @@ int str_cmp_by_name(const void* e1, const void* e2)
 	return strcmp(((struct stu*)e1)->name, ((struct stu*)e2)->name);
 	//strcmp返回值正好和快排这个函数要求返回值一样，-1，0，1，所以这里可以直接返回strcmp的结果
 }
+
+
+void swap(char* buf1, char* buf2, int width)
+{
+	for (int i = 0;i < width;i++)
+	{
+		char temp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = temp;
+		buf1++;
+		buf2++;
+	}
+
+}
+
+//尝试用冒泡排序实现类似qsort功能，可以对不同数据类型排序
+void Bubble_sort(void *base,int size,int width,int (*cmp)(const void* e1,const void* e2))
+{
+	for (int i = 0;i < size;i++)
+	{
+		for (int j = 0;j < size - i - 1;j++)
+		{
+			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)
+			{
+				swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+			}
+		}
+	}
+
+}
 int main()
 {
 	int arr[10] = { 2,5,25,67,2,567,2,14,5,67 };
 	int sz0 = sizeof(arr) / sizeof(arr[0]);
-	qsort(arr, sz0, sizeof(arr[0]), str_cmp_by_num);
+	Bubble_sort(arr, sz0, sizeof(arr[0]), str_cmp_by_num);
 
 
 
 	struct stu  a[4] = { {"zhangsan",38},{"lisi",20},{"wangwu",18},{"niuer",16}};
 	int sz = sizeof(a) / sizeof(a[0]);
-	qsort(a,sz,sizeof(a[0]), str_cmp_by_name);
+	Bubble_sort(a,sz,sizeof(a[0]), str_cmp_by_name);
 
 	return 0;
 }
