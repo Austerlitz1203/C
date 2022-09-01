@@ -12,7 +12,7 @@ typedef struct student
 
 int cmp_by_int(const void* e1, const void* e2)
 {
-	return *(int*)e1 - *(int*)e2;
+	return *(int*)e2 - *(int*)e1;
 }
 
 int cmp_by_float(const void* e1, const void* e2)
