@@ -78,7 +78,6 @@ void swap(char* buf1, char* buf2, int width)
 		buf1++;
 		buf2++;
 	}
-
 }
 
 //尝试用冒泡排序实现类似qsort功能，可以对不同数据类型排序
@@ -94,15 +93,12 @@ void Bubble_sort(void *base,int size,int width,int (*cmp)(const void* e1,const v
 			}
 		}
 	}
-
 }
 int main()
 {
 	int arr[10] = { 2,5,25,67,2,567,2,14,5,67 };
 	int sz0 = sizeof(arr) / sizeof(arr[0]);
 	Bubble_sort(arr, sz0, sizeof(arr[0]), str_cmp_by_num);
-
-
 
 	struct stu  a[4] = { {"zhangsan",38},{"lisi",20},{"wangwu",18},{"niuer",16}};
 	int sz = sizeof(a) / sizeof(a[0]);
