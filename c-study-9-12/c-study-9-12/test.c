@@ -112,10 +112,39 @@
 //}
 
 //memset-
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5 };
+//	memset(arr, 0, 9);//把9个字节的内容改成0，是以字节为单位，不是元素，一定注意
+//	for (int i = 0;i < 5;i++)
+//		printf("%d ", arr[i]);
+//}
+
+
+int BF(const char* dest, const char* src)
+{
+	int count = 0;
+	while (*dest != 0 && *src != 0)
+	{
+		count++;
+		char* dtemp = dest;
+		char* stemp = src;
+		while (*dest == *src && *dest != '\0')
+		{
+			dest++;
+			src++;
+			if (*src == '\0')
+				return count;
+		}
+		dest = dtemp + 1;//指针回溯
+		src = stemp;//指针回溯
+	}
+	return 0;
+}
 int main()
 {
-	int arr[] = { 1,2,3,4,5 };
-	memset(arr, 0, 9);//把9个字节的内容改成0，是以字节为单位，不是元素，一定注意
-	for (int i = 0;i < 5;i++)
-		printf("%d ", arr[i]);
+	char* a = "abcdefxxx";
+	char* b = "xxx";
+	printf("%d\n", BF(a, b));
+
 }

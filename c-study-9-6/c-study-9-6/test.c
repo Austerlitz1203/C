@@ -73,4 +73,5 @@ int main()
 	printf("%d\n", strlen(&p[0] + 1));
 
 	printf("%u   %u", p, &p);
+
 }

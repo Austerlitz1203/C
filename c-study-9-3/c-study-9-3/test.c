@@ -28,27 +28,68 @@
 
 
 //HJ10
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//    char a[500] = { 0 };
+//    int count = 0;
+//    while (gets(a))
+//    {
+//        int len = strlen(a);
+//        for (int i = 0;i < len;i++)
+//        {
+//            int flag = 1;
+//            for (int j = 0;j < i;j++)
+//            {
+//                if (a[i] == a[j])
+//                    flag = 0;
+//            }
+//            if (flag == 1)
+//                count++;
+//        }
+//        printf("%d", count);
+//    }
+//    return 0;
+//}
+
+
+//#include<stdio.h>
+//int main()
+//{
+//	char ch;
+//	printf("请输入字符ch：");// 1 2 3 回车
+//	scanf("%c", &ch);// 读取123
+//	printf("字符ch的值：%c\n", ch);//输出 字符ch的值：123
+//	char c_tmp;
+//	while ((c_tmp = getchar() != '\n') && c_tmp != EOF);
+//	printf("请输入字符：");// 1  2  3 回车
+//	printf("%c", getchar());  //由于清空了缓存区，第一个getchar()并没有读取123之后的回车，而是读取的1
+//	printf("%c", getchar());// 读取并输出2
+//	printf("%c", getchar());// 读取并输出3
+//}
+
 #include<stdio.h>
-#include<string.h>
 int main()
 {
-    char a[500] = { 0 };
-    int count = 0;
-    while (gets(a))
-    {
-        int len = strlen(a);
-        for (int i = 0;i < len;i++)
-        {
-            int flag = 1;
-            for (int j = 0;j < i;j++)
-            {
-                if (a[i] == a[j])
-                    flag = 0;
-            }
-            if (flag == 1)
-                count++;
-        }
-        printf("%d", count);
-    }
-    return 0;
+	int arr[8] = { 1,2,3,4,5,6,7,8 };
+	int left = 0, right = sizeof(arr) / sizeof(arr[0]) - 1;
+	//left和right分别表示该数据最左边和最右边的下标
+	int mid = 0,target=5;
+	while (left <= right)
+	{
+		mid = (left + right) / 2;
+		if (arr[mid] > target)
+			right = mid - 1;//重置右端点
+		if (arr[mid] < target)
+			left = mid + 1;//重置左端点
+		else
+		{
+			printf("找到了，下标是：%d", mid);
+			break;
+		}
+	}
+	if (left > right)//没找到的情况
+		printf("没有找到！");
+	return 0;
 }
