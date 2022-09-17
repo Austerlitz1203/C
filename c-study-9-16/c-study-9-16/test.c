@@ -90,16 +90,83 @@ struct test
 //恢复默认对其数
 #pragma pack()
 
-#include<stddef.h>
-int main()
-{   
-	printf("%d\n", offsetof(struct S1,c1));  //offsetof是比较第二个参数相较于第一个元素的偏移量
-	printf("%d\n", offsetof(struct S1, i));
-	printf("%d\n", offsetof(struct S1, c2));
+struct A
+{
+	short a;    //对齐数为2
+	int b;      //对齐数为4
+	char c;     //对齐数为1
+};
 
-	printf("%d\n",sizeof(struct S1));
-	printf("%d\n", sizeof(struct S2));
-	printf("%d\n", sizeof(struct test));
+struct B
+{
+	int a;      //对齐数为4
+	char b;     //对齐数为1
+	struct A c; //对齐数为4
+};
+
+
+struct book1
+{
+	int a;
+	char b;
+	int c;
+};
+
+struct book2
+{
+	char a;
+	int b;
+	int c;
+};
+#include<stddef.h>
+//int main()
+//{   
+//	printf("第一个的偏移情况：\n");
+//	printf("%d\n", offsetof(struct book1,a));  //offsetof是计算一个结构成员相对于结构开头的字节偏移量
+//	printf("%d\n", offsetof(struct book1, b));
+//	printf("%d\n", offsetof(struct book1, c));
+//	printf("第二个的偏移情况：\n");
+//	printf("%d\n", offsetof(struct book2, a));  
+//	printf("%d\n", offsetof(struct book2, b));
+//	printf("%d\n", offsetof(struct book2, c));
+//
+//	//printf("%d\n",sizeof(struct S1));
+//	//printf("%d\n", sizeof(struct S2));
+//	//printf("%d\n", sizeof(struct test));
+//
+//	//printf("%d\n", sizeof(struct A));
+//	//printf("%d\n", sizeof(struct B));
+//	return 0;
+//}
+
+#include<stdio.h>
+#include<stddef.h>
+struct test2
+{
+	char a;
+	int b;
+	char c;
+};
+
+#pragma pack(1)//设置默认对齐数，pack()括号内的值就是修改后的默认对齐数的值
+struct test1
+{
+	char a;
+	struct test2 b;
+	int c;
+};
+#pragma pack()//恢复默认对齐数
+
+
+int main()
+{
+	printf("第一个的偏移情况：\n");
+	printf("%d\n", offsetof(struct test1, a));
+	printf("%d\n", offsetof(struct test1, b));
+	printf("%d\n", offsetof(struct test1, c));
+	printf("第二个的偏移情况：\n");
+	printf("%d\n", offsetof(struct test2, a));
+	printf("%d\n", offsetof(struct test2, b));
+	printf("%d\n", offsetof(struct test2, c));
 	return 0;
 }
-
