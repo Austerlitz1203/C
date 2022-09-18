@@ -83,6 +83,20 @@
 //
 //	return dest;
 //}
+
+void* my_memcpy(void* dest, const void* src, const int size)
+{
+	assert(dest);
+	assert(src);
+	char* dest1 = (char*)dest;
+	char* src1 = (char*)src;
+	for (int i = 0;i < size;i++)
+	{
+		*dest1++ = *src1++;
+	}
+	return dest;
+}
+//
 //int main()
 //{
 //	//int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
@@ -94,9 +108,10 @@
 //	//my_memcpy(arr2, arr1, 20);
 //	
 //	int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
-//	my_memove(arr1+2, arr1, 20);//这里就没有达到理想情况，因为要把12345拷贝到34567里面，要从后往前拷贝，即54321
+//	my_memcpy(arr1+5, arr1, 20);//这里就没有达到理想情况，因为要把12345拷贝到34567里面，要从后往前拷贝，即54321
 //	//有时候要从前往后拷贝，有时候要从后往前拷贝，具体情况具体分析
-//
+//	for (int i = 0;i < 10;i++)
+//		printf("%d ", arr1[i]);
 //	return 0;
 //}
 
@@ -121,30 +136,50 @@
 //}
 
 
-int BF(const char* dest, const char* src)
-{
-	int count = 0;
-	while (*dest != 0 && *src != 0)
-	{
-		count++;
-		char* dtemp = dest;
-		char* stemp = src;
-		while (*dest == *src && *dest != '\0')
-		{
-			dest++;
-			src++;
-			if (*src == '\0')
-				return count;
-		}
-		dest = dtemp + 1;//指针回溯
-		src = stemp;//指针回溯
-	}
-	return 0;
-}
+//int BF(const char* dest, const char* src)
+//{
+//	int count = 0;
+//	while (*dest != 0 && *src != 0)
+//	{
+//		count++;
+//		char* dtemp = dest;
+//		char* stemp = src;
+//		while (*dest == *src && *dest != '\0')
+//		{
+//			dest++;
+//			src++;
+//			if (*src == '\0')
+//				return count;
+//		}
+//		dest = dtemp + 1;//指针回溯
+//		src = stemp;//指针回溯
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char* a = "abcdefxxx";
+//	char* b = "xxx";
+//	printf("%d\n", BF(a, b));
+//
+//}
+
+#include <stdio.h>
+#include <string.h>
+
 int main()
 {
-	char* a = "abcdefxxx";
-	char* b = "xxx";
-	printf("%d\n", BF(a, b));
+	//char name[40];
+	//char myname[] = "Pierre de Fermat";
 
+	//memcpy(name, myname, strlen(myname) + 1);//+1是因为要拷贝\0
+	//printf("%s\n", name);
+
+	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	my_memcpy(arr1+2, arr1, 5*sizeof(int));
+
+	for (int i = 0;i < 10;i++)
+		printf("%d ", arr1[i]);
+
+	return 0;
 }

@@ -3,6 +3,19 @@
 #include<stdlib.h>
 #include<assert.h>
 
+//int my_strlen(char* p)
+//{
+//	int count = 0;
+//	while (*p++)
+//		count++;
+//	return count;
+//}
+//int main()
+//{
+//	char a[]= "abcdef";
+//	printf("%d", my_strlen(a));
+//}
+
 //int main()
 //{
 //	char* c[] = { "ENTER","NEW","POINT","FIRST" };
@@ -16,17 +29,24 @@
 //}
 
 
-char* my_strcpy(char* dest, char* src)
-{
-	assert(dest);
-	assert(src);
-	char* temp = dest;
-	while (*dest++ = *src++)//当src指向的\0赋给dest时，这个式子的值也是0，为假，跳出while
-	{
-		;
-	}
-	return temp;
-}
+//char* my_strcpy(char* dest, char* src)
+//{
+//	assert(dest);
+//	assert(src);
+//	char* temp = dest;
+//	while (*dest++ = *src++)//当src指向的\0赋给dest时，这个式子的值也是0，为假，跳出while
+//	{
+//		;
+//	}
+//	return temp;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "xxx";
+//	my_strcpy(arr1, arr2);
+//	printf("%s", arr1);
+//}
 
 //int main()
 //{
@@ -96,7 +116,7 @@ char* my_strcpy(char* dest, char* src)
 //{
 //	char arr1[] = "abcd \0xxxxxxxxxxx";
 //	char arr2[] = "using";
-//	strcat(arr1, arr2);
+//	my_strcat(arr1, arr2);
 //	printf("%s", arr1);
 //	return 0;
 //}
@@ -136,37 +156,57 @@ char* my_strcpy(char* dest, char* src)
 
 
 
-char* my_strstr(char* src1, char* src2)
+//char* my_strstr(char* src1, char* src2)
+//{
+//	const char* s1 = src1;
+//	const char* s2 = src2;
+//	const char* p = src1;
+//	while (*p)
+//	{
+//		s1 = p;
+//		s2 = src2;
+//		while (*s1 != 0 && *s2 != 0 && (*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == 0)
+//		{
+//			return (char*)p;
+//		}
+//		p++;
+//	}
+//	return NULL;
+//}
+//
+//
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "cde";
+//	char* p = my_strstr(arr1, arr2);//返回的是目标空间里，第一个相同字符串的首字符的地址
+//	if (p == NULL)
+//		printf("no find");
+//	else
+//		printf("%s", p);
+//}
+
+int my_strcmp(char* dest, char* src)
 {
-	const char* s1 = src1;
-	const char* s2 = src2;
-	const char* p = src1;
-	while (*p)
+	while (*dest++ == *src++ && *dest != 0 && *src != 0)
 	{
-		s1 = p;
-		s2 = src2;
-		while (*s1 != 0 && *s2 != 0 && (*s1 == *s2))
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == 0)
-		{
-			return (char*)p;
-		}
-		p++;
+		;
 	}
-	return NULL;
+	return *dest - *src;
 }
-
-
 int main()
 {
-	char arr1[] = "abcdef";
-	char arr2[] = "cde";
-	char* p = my_strstr(arr1, arr2);//返回的是目标空间里，第一个相同字符串的首字符的地址
-	if (p == NULL)
-		printf("no find");
-	else
-		printf("%s", p);
+	char arr1[] = "abcdxxxx";
+	char arr2[] = "abcdxxxx";
+	if (my_strcmp(arr1, arr2) > 0)
+		printf(">");
+	else if (my_strcmp(arr1, arr2) < 0)
+		printf("<");
+	else printf("=");
+
 }
