@@ -60,29 +60,29 @@
 //memcpy-内存拷贝(只需要实现不重叠的拷贝就行，但是VS库函数里面是达到了重叠的也可以拷贝，可是不是所有编译器里面都这样)
 //memove-可重叠的内存拷贝
 //在遇到\0并不会停下来
-//void* my_memove(void* dest,const void* src,const int size)
-//{
-//	assert(dest);
-//	assert(src);
-//	char* dest1 = (char*)dest;
-//	char* src1 = (char*)src;
-//	if (dest < src)//从前向后拷贝    
-//	{
-//		for (int i = 0;i < size;i++)
-//		{
-//			*dest1++ = *src1++;
-//		}
-//	}
-//	else //从后向前拷贝
-//	{
-//		for (int i = size - 1;i >= 0;i--)
-//		{
-//			*(dest1 + i) = *(src1 + i);
-//		}
-//	}
-//
-//	return dest;
-//}
+void* my_memmove(void* dest,const void* src,const int size)
+{
+	assert(dest);
+	assert(src);
+	char* dest1 = (char*)dest;
+	char* src1 = (char*)src;
+	if (dest < src)//从前向后拷贝    
+	{
+		for (int i = 0;i < size;i++)
+		{
+			*dest1++ = *src1++;
+		}
+	}
+	else //从后向前拷贝
+	{
+		for (int i = size - 1;i >= 0;i--)
+		{
+			*(dest1 + i) = *(src1 + i);
+		}
+	}
+
+	return dest;
+}
 
 void* my_memcpy(void* dest, const void* src, const int size)
 {
@@ -176,10 +176,21 @@ int main()
 	//printf("%s\n", name);
 
 	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	my_memcpy(arr1+2, arr1, 5*sizeof(int));
+	my_memmove(arr1+2, arr1, 5*sizeof(int));
 
 	for (int i = 0;i < 10;i++)
 		printf("%d ", arr1[i]);
+
+	//int a = 5;
+	//int b = 4;
+	//int* dest = &a;
+	//int* src = &b;
+	//int ret = memcmp(dest, src, 4);
+	//if (ret < 0)
+	//	printf("<");
+	//else if (ret > 0)
+	//	printf(">");
+	//else printf("=");
 
 	return 0;
 }

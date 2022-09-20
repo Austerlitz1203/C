@@ -123,16 +123,16 @@
 
 
 //有长度控制的字符函数
-//int main()
-//{
-//	char arr1[] = "abcdefghijk";
-//	char arr2[] = "xxxx";
-//	//strncpy(arr1, arr2, 2);//拷贝2个
-//	
-//	strncpy(arr1, arr2, 8);//监视内存可知，由于arr2只有四个，所以前四个拷贝了，后四个全是\0
-//	printf("%s", arr1);
-//	return 0;
-//}
+int main()
+{
+	char arr1[] = "abcdefghijk";
+	char arr2[] = "xxxx";
+	//strncpy(arr1, arr2, 2);//拷贝2个
+	
+	strncpy(arr1, arr2, 8);//监视内存可知，由于arr2只有四个，所以前四个拷贝了，后四个全是\0
+	printf("%s", arr1);
+	return 0;
+}
 
 //int main()
 //{
@@ -191,22 +191,22 @@
 //		printf("%s", p);
 //}
 
-int my_strcmp(char* dest, char* src)
-{
-	while (*dest++ == *src++ && *dest != 0 && *src != 0)
-	{
-		;
-	}
-	return *dest - *src;
-}
-int main()
-{
-	char arr1[] = "abcdxxxx";
-	char arr2[] = "abcdxxxx";
-	if (my_strcmp(arr1, arr2) > 0)
-		printf(">");
-	else if (my_strcmp(arr1, arr2) < 0)
-		printf("<");
-	else printf("=");
-
-}
+//int my_strcmp(char* dest, char* src)
+//{
+//	while (*dest++ == *src++ && *dest != 0 && *src != 0)
+//	{
+//		;
+//	}
+//	return *dest - *src;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdxxxx";
+//	char arr2[] = "abcdxxxx";
+//	if (my_strcmp(arr1, arr2) > 0)
+//		printf(">");
+//	else if (my_strcmp(arr1, arr2) < 0)
+//		printf("<");
+//	else printf("=");
+//
+//}
