@@ -24,6 +24,17 @@ struct contact
 	int sz;
 };
 
+enum option
+{
+	EXIT,
+	ADD,
+	DEL,
+	SEARCH,
+	MODIFY,
+	SORT,
+	SHOW
+};
+
 //初始化
 void InitContact(struct contact* ps);
 //增加信息
