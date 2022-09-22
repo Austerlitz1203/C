@@ -7,7 +7,7 @@ void menu()
 	printf("****1¡¢Add     2¡¢Del*****\n");
 	printf("****3¡¢Search  4¡¢Modify**\n");
 	printf("****5¡¢sort    6¡¢Show****\n");
-	printf("****0¡¢Exit  **********\n");
+	printf("****7¡¢Clean   0¡¢Exit****\n");
 	printf("**************************\n");
 }
 int main()
@@ -40,6 +40,9 @@ int main()
 			break;
 		case SHOW:
 			ShowContact(&con);
+			break;
+		case Clean:
+			CleanContact(&con);
 			break;
 		case EXIT:
 			printf("ÍË³öÍ¨Ñ¶Â¼£¡\n");

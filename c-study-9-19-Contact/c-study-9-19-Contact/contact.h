@@ -20,7 +20,7 @@ struct people
 
 struct contact
 {
-	struct people data[100];
+	struct people data[MAX];
 	int sz;
 };
 
@@ -32,7 +32,8 @@ enum option
 	SEARCH,
 	MODIFY,
 	SORT,
-	SHOW
+	SHOW,
+	Clean
 };
 
 //初始化
@@ -51,4 +52,5 @@ void SearchContact(const struct contact* ps);
 void ModifyContact(struct contact* ps);
 //按照年龄来排序
 void SortContact(const struct contact* ps);
-//
+//清空通讯录
+void CleanContact(struct contact* ps);

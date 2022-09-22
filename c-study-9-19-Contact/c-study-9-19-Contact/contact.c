@@ -116,14 +116,28 @@ void ModifyContact(struct contact* ps)
 }
 
 //按照年龄来排序
-int cmp(const void* e1, const void* e2)
+int cmp1(const void* e1, const void* e2)
 {
 	return ((struct people*)e1)->age - ((struct people*)e2)->age;
+}
+
+//按照名字来排序
+int cmp2(const void* e1, const void* e2)
+{
+	return strcmp(((struct people*)e1)->name, ((struct people*)e2)->name);
 }
 void SortContact(const struct contact* ps)
 {
 	assert(ps);
-	qsort(ps->data, ps->sz, sizeof(struct people), cmp);
+	qsort(ps->data, ps->sz, sizeof(struct people), cmp2);
 	printf("排序成功！\n");
+	return;
+}
+
+void CleanContact(struct contact* ps)
+{
+	assert(ps);
+	memset(ps->data, 0, sizeof(struct people) * MAX);
+	ps->sz = 0;
 	return;
 }
