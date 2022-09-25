@@ -20,8 +20,9 @@ struct people
 
 struct contact
 {
-	struct people data[MAX];
-	int sz;
+	struct people *data;
+	int sz;   //有多少个联系人信息
+	int capacity; //可以容纳多少个联系人信息
 };
 
 enum option
@@ -38,6 +39,8 @@ enum option
 
 //初始化
 void InitContact(struct contact* ps);
+//检查空间是否足够，不够则增容
+void CheckContact(struct contact* ps);
 //增加信息
 void AddContact(struct contact* ps);
 //打印信息

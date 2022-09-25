@@ -5,17 +5,44 @@ void InitContact(struct contact* ps)
 {
 	assert(ps);
 	ps->sz = 0;
-	memset(ps->data, 0, MAX * sizeof(struct people));//初始化函数
+	ps->capacity = 0;
+	ps->data = NULL;
+	//memset(ps->data, 0, MAX * sizeof(struct people));//初始化函数
 }
 
+void CheckContact(struct contact* ps)
+{
+	assert(ps);
+	if (ps->sz < ps->capacity)//不需要扩容
+		return;
+	//扩容
+	int newcapacity = ps->capacity == 0 ? 4 : 2 * ps->capacity;
+	if (newcapacity == 4)
+	{
+		char* newdata1 = (struct people*)calloc(newcapacity, sizeof(struct people));
+		ps->capacity = newcapacity;
+		ps->data = newdata1;
+		return;
+	}
+	char* newdata = (struct people*)realloc(ps->data, newcapacity * sizeof(struct people));
+	if (!newdata)
+	{
+		exit(-1);
+		return;
+	}
+	ps->data = newdata;
+	ps->capacity = newcapacity;
+	return;
+}
 void AddContact(struct contact* ps)
 {
 	assert(ps);
-	if (ps->sz == MAX)
-	{
-		printf("通讯录已满，无法添加数据！\n");
-		return;
-	}
+	CheckContact(ps);
+	//if (ps->sz == ps->capacity)
+	//{
+	//	printf("通讯录已满，无法添加数据！\n");
+	//	return;
+	//}
 	
 	//添加信息
 	printf("请输入名字：");
@@ -137,7 +164,9 @@ void SortContact(const struct contact* ps)
 void CleanContact(struct contact* ps)
 {
 	assert(ps);
-	memset(ps->data, 0, sizeof(struct people) * MAX);
+	//memset(ps->data, 0, sizeof(struct people) * MAX);
+	ps->data = NULL;
 	ps->sz = 0;
+	ps->capacity = 0;
 	return;
 }
