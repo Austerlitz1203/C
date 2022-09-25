@@ -123,16 +123,16 @@
 
 
 //有长度控制的字符函数
-int main()
-{
-	char arr1[] = "abcdefghijk";
-	char arr2[] = "xxxx";
-	//strncpy(arr1, arr2, 2);//拷贝2个
-	
-	strncpy(arr1, arr2, 8);//监视内存可知，由于arr2只有四个，所以前四个拷贝了，后四个全是\0
-	printf("%s", arr1);
-	return 0;
-}
+//int main()
+//{
+//	char arr1[] = "abcdefghijk";
+//	char arr2[] = "xxxx";
+//	//strncpy(arr1, arr2, 2);//拷贝2个
+//	
+//	strncpy(arr1, arr2, 8);//监视内存可知，由于arr2只有四个，所以前四个拷贝了，后四个全是\0
+//	printf("%s", arr1);
+//	return 0;
+//}
 
 //int main()
 //{
@@ -210,3 +210,62 @@ int main()
 //	else printf("=");
 //
 //}
+
+
+
+
+
+//char* my_strncpy(char* dest, char* src, int n)
+//{
+//	char* tmp = dest;
+//	while (n)
+//	{
+//		*dest = *src;
+//		if (!*dest)
+//			break;
+//		dest++;
+//		src++;
+//		n--;
+//	}
+//	return tmp;
+//}
+//
+//int main()
+//{
+//	char arr1[20] = "abcdefghijk";
+//	char arr2[20] = "usi";
+//	my_strncpy(arr1, arr2,8);
+//	printf("%s\n", arr1);
+//
+//	//my_strncpy(arr2, arr1, 8);
+//	//printf("%s\n", arr2);
+//}
+
+
+char* my_strncat(char* dest, char* src, int n)
+{
+	char* temp = dest;
+	while (*dest)
+	{
+		dest++;
+	}
+	while (n)
+	{
+		*dest = *src;
+		if (!*dest)
+			break;
+		dest++;
+		src++;
+		n--;
+	}
+	return temp;
+}
+
+int main()
+{
+	char arr1[20] = "abcefg";
+	char arr2[20] = "using";
+	my_strncat(arr1, arr2, 7);
+	printf("%s\n", arr1);
+	return 0;
+}
