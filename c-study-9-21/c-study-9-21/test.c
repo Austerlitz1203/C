@@ -7,13 +7,14 @@
 //{
 //	Mon,//结构体里这些叫成员变量，这里叫枚举的可能取值/枚举常量，既是常量，就不可以修改，像下面想改Thu是错误的
 //	Tue,
-//	Thu,
-//	Fri,
 //	Wen,
+//	Thu=9,
+//	Fri,
 //	Sat=10,
 //	Sun
 //};
-//
+
+
 //int main()
 //{
 //	//enum Day a = 4;//在c语言中可以，但是c++会报错
@@ -38,13 +39,21 @@
 //联合/公用体
 #include<stdio.h>
 
-//所有成员共用一个内存
+//所有成员共用一块内存
 union un
 {
-	char a;
-	int b;
-	double c;
+	double b;
+	int a;
 };
+
+//int main()
+//{
+//	union un ab = {128};
+//	printf("%p\n",&ab.a);
+//	printf("%p\n", &ab.b);
+//	printf("%u\n", sizeof(ab));
+//}
+
 
 //在判断机器大小端方面的应用
 union  
@@ -52,6 +61,7 @@ union
 	char a;
 	int b;
 }u;
+
 int main()
 {
 	//union un a;//只用其中一个的时候，不用其他的成员，联合体的成员不会同时用
@@ -70,3 +80,4 @@ int main()
 		printf("小端！\n");
 	return 0;
 }
+
