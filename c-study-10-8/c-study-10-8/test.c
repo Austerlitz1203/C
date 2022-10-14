@@ -174,11 +174,9 @@
 //	//这里并不会换行，所以要换行的话，手动加\n
 //	fputs("\nnextline", pf);
 //
-//
 //	//关闭
 //	fclose(pf);//此时pf并不指向NULL
 //	pf = NULL;
-//
 //	return 0;
 //}
 
@@ -199,7 +197,7 @@
 //	//读文件，一行一行读
 //	char arr[20] = "123456789";
 //	fgets(arr, 5, pf);//5个，是算上自己最后加的\0，并且最多只读一行。  如果一次未读完一行，那么下次接着读
-//
+//	fgets(arr,9,pf);
 //	printf(arr);
 //
 //	//关闭
@@ -211,16 +209,16 @@
 
 
 
-//#include<stdio.h>
-//
-//struct S
-//{
-//	char name[20];
-//	int age;
-//
-//};
+#include<stdio.h>
 
-//写入结构体数据
+struct S
+{
+	char name[20];
+	int age;
+
+};
+
+////写入结构体数据
 //int main()
 //{
 //	struct S a = { "zhangsan",20 };
@@ -233,8 +231,8 @@
 //	}
 //
 //	//格式化
-//	fprintf(pf, "%s %d", a.name, a.age);
-//
+//	fprintf(pf, "struct S a:%s %d", a.name, a.age);
+//	fprintf(pf, "struct S a:%s %d", a.name, a.age);
 //	//关闭
 //	fclose(pf);//此时pf并不指向NULL
 //	pf = NULL;
@@ -293,17 +291,17 @@
 
 
 
-#include<stdio.h>
-
-struct S
-{
-	char name[20];
-	int age;
-
-};
-
-
-//二进制写入
+//#include<stdio.h>
+//
+//struct S
+//{
+//	char name[20];
+//	int age;
+//
+//};
+//
+//
+////二进制写入
 //int main()
 //{
 //	struct S a = { "zhangsan",20 };
@@ -326,23 +324,55 @@ struct S
 //}
 
 //二进制读取
+//int main()
+//{
+//	struct S b = { 0 };
+//
+//	FILE* pf = fopen("test4.txt", "rb");//相对路径
+//	if (pf == NULL)
+//	{
+//		perror("fopen");
+//		return 1;
+//	}
+//
+//	//二进制读
+//	fread(&b, sizeof(b), 1, pf);//写进去之后，20看不懂，因为是二进制方式写入
+//
+//	//关闭
+//	fclose(pf);//此时pf并不指向NULL
+//	pf = NULL;
+//
+//	return 0;
+//}
+
+
+
+#include<stdio.h>
+
 int main()
 {
-	struct S b = { 0 };
-
-	FILE* pf = fopen("test4.txt", "rb");//相对路径
+	FILE* pf = fopen("test5.txt", "w");
 	if (pf == NULL)
 	{
 		perror("fopen");
 		return 1;
 	}
 
-	//二进制读
-	fread(&b, sizeof(b), 1, pf);//写进去之后，20看不懂，因为是二进制方式写入
+	char name[20] = "zhangsan";
+	int age = 20;
+	fprintf(stdout, "My name is :%s ,I am %d years old.",name,age);
 
-	//关闭
-	fclose(pf);//此时pf并不指向NULL
+	fclose(pf);
 	pf = NULL;
-
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
