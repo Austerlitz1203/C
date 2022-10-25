@@ -120,7 +120,7 @@
 //	int a = 10;
 //	return &a;//这里知识恰好没被改
 //}
-//
+
 //int main()
 //{
 //	int *ret = test();
@@ -130,16 +130,16 @@
 
 
 //错误放大
-int* test()
-{
-	int a = 10;
-	return &a;//这里知识恰好没被改
-}
-
-int main()
-{
-	int* ret = test();
-	printf("hehe\n"); //函数栈帧的创建和销毁知识，test函数的栈帧销毁了，然后printf的栈帧又创建，所以a的地址的内容被改了
-	printf("%d ", *ret);
-	return 0;
-}
+//int* test()
+//{
+//	int a = 10;
+//	return &a;//这里知识恰好没被改
+//}
+//
+//int main()
+//{
+//	int* ret = test();
+//	printf("hehe\n"); //函数栈帧的创建和销毁知识，test函数的栈帧销毁了，然后printf的栈帧又创建，所以a的地址的内容被改了
+//	printf("%d ", *ret);
+//	return 0;
+//}
