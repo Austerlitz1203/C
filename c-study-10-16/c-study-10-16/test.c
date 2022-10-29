@@ -16,19 +16,19 @@
 //
 //
 
-
+//
 //#include<stdio.h>
 //
 //struct info
 //{
 //	char name[20];
 //	int age;
-//    float score;
+//	float score;
 //};
 //
 //int main()
 //{
-//	struct info a= { "zhangsan",30,95.5f };
+//	struct info a = { "zhangsan",30,95.5f };
 //	char buf[100] = { 0 };
 //
 //	//把格式化数据转换成字符串，输出到字符数组里面。
@@ -37,11 +37,11 @@
 //
 //	//从buf中按照格式输入到内存里面
 //	sscanf(buf, "%s %d %f", a.name, &(a.age), &(a.score));
-//	printf("\n%s %d %f", a.name, a.age, a.score);
+//	printf("\n%s %d %.2f", a.name, a.age, a.score);
 //
 //	return 0;
 //}
-
+//
 
 
 //文件的随机读取
@@ -100,7 +100,7 @@
 //文件读取的判定
 //被错用的feof   文件读取过程中，不能使用feof的返回值直接判断文件的读取是否结束
 // feof本来功能是：当文件读取结束时，来判断：是读取失败而结束，还是读取到文件末尾结束
-// feof返回非0，那么是读到文件末尾结束。  如果返回
+// feof返回非0，那么是读到文件末尾结束。  如果返回0，那么就是读取失败而结束。
 //
 
 //文本文件判断结束
